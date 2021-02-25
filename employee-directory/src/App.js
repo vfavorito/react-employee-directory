@@ -1,9 +1,11 @@
 import './App.css';
-import Employee from "./components/Employee/employee";
-import Table from "./components/Table/table";
+import Container from "./components/Container/container"
+import Employees from "./employees.json"
 function App() {
   return (
-    <h1>Employee Directory</h1>
+    <div>
+      <Container employees={Employees}></Container>
+    </div>
   );
 }
 

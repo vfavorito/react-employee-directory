@@ -5,7 +5,6 @@ import Sort from "../Sort/sort"
 import API from "../../utils/API"
 
 class Container extends Component {
-
     state = {
         initemployees: [],
         employees: [],
@@ -33,14 +32,14 @@ class Container extends Component {
     handleLastNameSearch = event => {
         event.preventDefault();
         this.setState({
-            employees: this.state.employees.filter(employee => employee.lastName.toLowerCase().includes(this.state.lastName.toLowerCase()))
+            employees: this.state.employees.filter(employee => employee.name.last.toLowerCase().includes(this.state.lastName.toLowerCase()))
         })
     };
 
     handleFirstNameSearch = event => {
         event.preventDefault();
         this.setState({
-            employees: this.state.employees.filter(employee => employee.firstName.toLowerCase().includes(this.state.firstName.toLowerCase()))
+            employees: this.state.employees.filter(employee => employee.name.first.toLowerCase().includes(this.state.firstName.toLowerCase()))
         })
     };
 
@@ -49,17 +48,19 @@ class Container extends Component {
         const initemployees = this.state.initemployees;
         switch (sortMethod) {
             case "unsorted":
-                console.log(initemployees)
+                console.log("initemployees",initemployees);
+                console.log("employees",this.state.employees);
                 this.setState({
                     employees: this.state.initemployees
                 });
                 break;
             case "firstNameSorted":
-                console.log(initemployees)
+                console.log("initemployees",initemployees);
+                console.log("employees",this.state.employees);
                 this.setState({
                     employees: this.state.employees.sort(function (a, b) {
-                        if (a.firstName < b.firstName) { return -1; }
-                        if (a.firstName > b.firstName) { return 1; }
+                        if (a.name.first < b.name.first) { return -1; }
+                        if (a.name.first > b.name.first) { return 1; }
                         return 0;
                     })
                 });
@@ -67,8 +68,8 @@ class Container extends Component {
             case "lastNameSorted":
                 this.setState({
                     employees: this.state.employees.sort(function (a, b) {
-                        if (a.lastName < b.lastName) { return -1; }
-                        if (a.lastName > b.lastName) { return 1; }
+                        if (a.name.last < b.name.last) { return -1; }
+                        if (a.name.last > b.name.last) { return 1; }
                         return 0;
                     })
                 });

@@ -6,10 +6,10 @@ function Table(props) {
     return (
         <table className="table">
             <thead>
-                <tr>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Phone Number</th>
+                <tr className="tableHead">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
                 </tr>
             </thead>
             <tbody>

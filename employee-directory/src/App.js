@@ -1,10 +1,10 @@
 import './App.css';
-import Container from "./components/Container/container"
-import Employees from "./employees.json"
+import Container from "./components/Container/container";
+
 function App() {
   return (
     <div>
-      <Container employees={Employees}></Container>
+      <Container></Container>
     </div>
   );
 }

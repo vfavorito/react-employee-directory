@@ -1,6 +1,8 @@
 import React from "react";
 
+
 function Table(props) {
+
     return (
         <table class="table">
             <thead>
@@ -13,13 +15,14 @@ function Table(props) {
             <tbody>
                 {props.employees.map(employee =>
                     <tr>
-                        <td>{employee.firstName}</td>
-                        <td>{employee.lastName}</td>
-                        <td>{employee.phoneNumber}</td>
+                        <td>{employee.name.first}</td>
+                        <td>{employee.name.last}</td>
+                        <td>{employee.phone}</td>
                     </tr>)}
             </tbody>
         </table>
-    )
+    );
+
 }
 
 export default Table;

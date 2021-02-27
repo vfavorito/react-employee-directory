@@ -6,7 +6,7 @@ import API from "../../utils/API"
 
 class Container extends Component {
     state = {
-        initemployees: [],
+        initEmployees: [],
         employees: [],
         lastName: "",
         firstName: ""
@@ -15,8 +15,7 @@ class Container extends Component {
         API.search()
             .then(res =>
                 this.setState({
-                    employees: res.data.results,
-                    initemployees:res.data.results
+                    employees: res.data.results
                 })
             )
     }
@@ -45,55 +44,46 @@ class Container extends Component {
 
     handleSort = event => {
         const sortMethod = event.target.id;
-        const initemployees = this.state.initemployees;
         switch (sortMethod) {
-            case "unsorted":
-                console.log("initemployees",initemployees);
-                console.log("employees",this.state.employees);
-                this.setState({
-                    employees: this.state.initemployees
-                });
-                break;
             case "firstNameSorted":
-                console.log("initemployees",initemployees);
-                console.log("employees",this.state.employees);
                 this.setState({
-                    employees: this.state.employees.sort(function (a, b) {
-                        if (a.name.first < b.name.first) { return -1; }
-                        if (a.name.first > b.name.first) { return 1; }
-                        return 0;
-                    })
-                });
+                    employees: this.state.employees.sort((a, b) => a.name.first.localeCompare(b.name.first))
+                })
                 break;
             case "lastNameSorted":
                 this.setState({
-                    employees: this.state.employees.sort(function (a, b) {
-                        if (a.name.last < b.name.last) { return -1; }
-                        if (a.name.last > b.name.last) { return 1; }
-                        return 0;
-                    })
-                });
+                    employees: this.state.employees.sort((a, b) => a.name.last.localeCompare(b.name.last))
+                })
                 break;
             default:
                 this.setState({
-                    employees: this.state.initemployees
+                    employees: this.state.employees
                 });
         }
     }
     render() {
         return (
-            <>
-                <h1>Employee Directory</h1>
-                <Search
-                    handleInputChange={this.handleInputChange}
-                    handleLastNameSearch={this.handleLastNameSearch}
-                    handleFirstNameSearch={this.handleFirstNameSearch}
-                />
-                <Sort handleSort={this.handleSort} />
+            <div className="container">
+                <h1 className="heading">Employee Directory</h1>
+                <div className="row">
+                    <div className="col-md-6">
+                        <Search
+                            handleInputChange={this.handleInputChange}
+                            handleLastNameSearch={this.handleLastNameSearch}
+                            handleFirstNameSearch={this.handleFirstNameSearch}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <Sort
+                            handleSort={this.handleSort}
+                        />
+                    </div>
+                </div>
                 <Table
                     employees={this.state.employees}
                 />
-            </>
+
+            </div>
         )
     }
 };

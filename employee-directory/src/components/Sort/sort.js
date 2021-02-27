@@ -2,24 +2,23 @@ import React from "react";
 
 function Sort(props) {
     return (
-        <>
-            <h2>The Sort Box</h2>
-            <div className="btn-group" id="petSelect" data-toggle="buttons">
-               
-                    <input className="toggle" type="radio" name="flexRadio" id="unsorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" >Unsorted</label>
-                
-                
-                    <input className="toggle" type="radio" name="flexRadio" id="firstNameSorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" >First Name Alphabetical</label>
-
-                
-                
-                    <input className="toggle" type="radio" name="flexRadio" id="lastNameSorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" >Last Name Alphbetical</label>
-                
+        <div className="sort">
+            <div className="row">
+                <h2 className="col-md-12">Sort Directory By:</h2>
             </div>
-        </>
+            <div className="row">
+                <div className="btn-group-vertical col-md-12" data-toggle="buttons">
+                    <label className="form-check-label" htmlFor="firstNameSorted" >
+                        <input className="toggle" type="radio" name="flexRadio" id="firstNameSorted" onClick={props.handleSort}></input>
+                    First Name Alphabetically
+                    </label>
+                    <label className="form-check-label" htmlFor="lastNameSorted" >
+                        <input className="toggle" type="radio" name="flexRadio" id="lastNameSorted" onClick={props.handleSort}></input>
+                    Last Name Alphabetically
+                    </label>
+                </div>
+            </div>
+        </div>
     )
 }
 export default Sort

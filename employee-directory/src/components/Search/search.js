@@ -2,7 +2,8 @@ import React from "react";
 
 function Search(props) {
     return (
-        <div>
+        <div className="search">
+            <h2>Search For Individuals By:</h2>
             <form className="form-inline">
                 <p>Last Name:</p>
                 <div className="form-group mx-sm-3 mb-2">

@@ -7,16 +7,16 @@ function Sort(props) {
             <div className="btn-group" id="petSelect" data-toggle="buttons">
                
                     <input className="toggle" type="radio" name="flexRadio" id="unsorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" for="unsorted">Unsorted</label>
+                    <label className="form-check-label" >Unsorted</label>
                 
                 
                     <input className="toggle" type="radio" name="flexRadio" id="firstNameSorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" for="firstNameSorted">First Name Alphabetical</label>
+                    <label className="form-check-label" >First Name Alphabetical</label>
 
                 
                 
                     <input className="toggle" type="radio" name="flexRadio" id="lastNameSorted" onClick={props.handleSort}></input>
-                    <label className="form-check-label" for="lastNameSorted">Last Name Alphbetical</label>
+                    <label className="form-check-label" >Last Name Alphbetical</label>
                 
             </div>
         </>

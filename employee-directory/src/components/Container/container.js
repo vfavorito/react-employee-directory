@@ -15,10 +15,11 @@ class Container extends Component {
         API.search()
             .then(res =>
                 this.setState({
-                    employees: res.data.results
+                    employees: res.data.results,
+                    initEmployees: res.data.results,
                 })
             )
-    }
+    };
 
     handleInputChange = event => {
         const value = event.target.value;
@@ -32,14 +33,15 @@ class Container extends Component {
         event.preventDefault();
         this.setState({
             employees: this.state.employees.filter(employee => employee.name.last.toLowerCase().includes(this.state.lastName.toLowerCase()))
-        })
+        });
+        console.log(this.state.initEmployees)
     };
 
     handleFirstNameSearch = event => {
         event.preventDefault();
         this.setState({
             employees: this.state.employees.filter(employee => employee.name.first.toLowerCase().includes(this.state.firstName.toLowerCase()))
-        })
+        });
     };
 
     handleSort = event => {
@@ -47,13 +49,11 @@ class Container extends Component {
         switch (sortMethod) {
             case "firstNameSorted":
                 this.setState({
-                    employees: this.state.employees.sort((a, b) => a.name.first.localeCompare(b.name.first))
-                })
+                    employees: this.state.initEmployees.sort((a, b) => a.name.first.localeCompare(b.name.first))})
                 break;
             case "lastNameSorted":
                 this.setState({
-                    employees: this.state.employees.sort((a, b) => a.name.last.localeCompare(b.name.last))
-                })
+                    employees: this.state.initEmployees.sort((a, b) => a.name.last.localeCompare(b.name.last))})
                 break;
             default:
                 this.setState({
@@ -82,7 +82,6 @@ class Container extends Component {
                 <Table
                     employees={this.state.employees}
                 />
-
             </div>
         )
     }
